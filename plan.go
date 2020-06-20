@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/barnex/fftw/internal/double"
-	"github.com/barnex/fftw/internal/float"
+	"github.com/gonvee/fftw/internal/double"
+	"github.com/gonvee/fftw/internal/float"
 )
 
 // An FFT Plan is created once to set up an FFT with certain size and input/output arrays.

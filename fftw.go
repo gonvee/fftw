@@ -4,8 +4,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/barnex/fftw/internal/double"
-	"github.com/barnex/fftw/internal/float"
+	"github.com/gonvee/fftw/internal/double"
+	"github.com/gonvee/fftw/internal/float"
 )
 
 // Protects planners from concurrent modification.
@@ -61,7 +61,6 @@ func PlanManyR2C(n []int, howmany int, in []float32, inembed []int, istride, idi
 	return &floatHandle{p, unsafe.Pointer(&in[0]), unsafe.Pointer(&out[0])}
 }
 
-
 // PlanR2C creates a real-to-complex FFT plan of arbitrary rank. It panics when the plan can not be created.
 // The size of the output array is roughly half the size of the input array, see R2CSize.
 //
@@ -84,7 +83,6 @@ func PlanR2C(n []int, in []float32, out []complex64, flags Flag) Plan {
 	return PlanManyR2C(n, howmany, in, inembed, istride, idist, out, onembed, ostride, odist, flags)
 }
 
-
 // PlanC2R creates a complex-to-real FFT plan of arbitrary rank. It panics when the plan can not be created.
 //
 // n holds the size of the transform dimensions, len(n) is the transform's rank.
@@ -105,7 +103,6 @@ func PlanC2R(n []int, in []complex64, out []float32, flags Flag) Plan {
 	onembed := n
 	return PlanManyC2R(n, howmany, in, inembed, istride, idist, out, onembed, ostride, odist, flags)
 }
-
 
 // Wrapper for fftwf_plan_many_dft_c2r:
 // 	http://www.fftw.org/doc/Advanced-Real_002ddata-DFTs.html
@@ -178,7 +175,6 @@ func PlanManyZ2D(n []int, howmany int, in []complex128, inembed []int, istride, 
 	return &doubleHandle{p, unsafe.Pointer(&in[0]), unsafe.Pointer(&out[0])}
 }
 
-
 // PlanD2Z creates a real-to-complex FFT plan of arbitrary rank. It panics when the plan can not be created.
 // The size of the output array is roughly half the size of the input array, see R2CSize.
 //
@@ -201,7 +197,6 @@ func PlanD2Z(n []int, in []float64, out []complex128, flags Flag) Plan {
 	return PlanManyD2Z(n, howmany, in, inembed, istride, idist, out, onembed, ostride, odist, flags)
 }
 
-
 // PlanZ2D creates a complex-to-real FFT plan of arbitrary rank. It panics when the plan can not be created.
 //
 // n holds the size of the transform dimensions, len(n) is the transform's rank.
@@ -222,4 +217,3 @@ func PlanZ2D(n []int, in []complex128, out []float64, flags Flag) Plan {
 	onembed := n
 	return PlanManyZ2D(n, howmany, in, inembed, istride, idist, out, onembed, ostride, odist, flags)
 }
-

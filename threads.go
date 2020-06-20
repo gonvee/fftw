@@ -1,8 +1,8 @@
 package fftw
 
 import (
-	"github.com/barnex/fftw/internal/double"
-	"github.com/barnex/fftw/internal/float"
+	"github.com/gonvee/fftw/internal/double"
+	"github.com/gonvee/fftw/internal/float"
 )
 
 // InitThreads should be called once to initialize multi-threaded FFTW. See:
